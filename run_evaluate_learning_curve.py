@@ -14,10 +14,10 @@ from torch.utils.data import DataLoader
 from pm4py.objects.log.importer.xes import importer as xes_importer
 from pm4py.objects.petri_net.importer import importer as pnml_importer
 
-from model_pgnn_sync_context_behavior_stats_freq import FitnessPrecisionPredictor
+from model import FitnessPrecisionPredictor
 from cached_variant_a_dataset import CachedVariantADataset, load_split_records
 
-from graph_pgnn_sync_context_behavior_stats import (
+from graph import (
     AlignmentPairDataset,
     collate_alignment_pairs,
     prepare_pair_specs,
@@ -36,7 +36,7 @@ except Exception:
 MODEL_ROOT = Path(
     os.environ.get(
         "LEARNING_CURVE_MODEL_ROOT",
-        "/data/gpfs/projects/uom00022/FitPrecPredictor/models/learning_curve/pgnn-sync-context-behavior-stats-recomputed-dataset",
+        "models/learning_curve/pgnn-sync-context-behavior-stats-recomputed-dataset",
     )
 )
 

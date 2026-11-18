@@ -7,19 +7,19 @@ from datetime import datetime
 import torch
 
 from trainer_accum_target_earlystop import PredictorTrainConfig, AlignmentPredictorTrainer
-from model_pgnn_sync_context_no_behavior_stats import FitnessPrecisionPredictor
+from model import FitnessPrecisionPredictor
 from cached_variant_a_dataset import CachedVariantADataset, load_split_records
 
 
 GRAPH_CACHE_DIR = Path(
-    os.environ.get("GRAPH_CACHE_DIR", "graph_cache/variant_a_v11_pgnn_sync_context_no_behavior_stats_expanded_corrected")
+    os.environ.get("GRAPH_CACHE_DIR", "graph_cache/pgnn-sync-context-behavior-stats-recomputed-dataset")
 )
 
 SAVE_MODELS_DIR = Path(
     os.environ.get("SAVE_MODELS_DIR", "models")
 )
 
-SPLIT_DIR = Path("splits_expanded_corrected_dataset/grouped")
+SPLIT_DIR = Path("splits_recomputed_dataset/grouped")
 
 
 def main():

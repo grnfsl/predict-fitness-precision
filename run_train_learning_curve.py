@@ -14,7 +14,7 @@ from trainer_accum_target_earlystop import (
     PredictorTrainConfig,
     AlignmentPredictorTrainer,
 )
-from model_pgnn_sync_context_behavior_stats_freq import FitnessPrecisionPredictor
+from model import FitnessPrecisionPredictor
 from cached_variant_a_dataset import CachedVariantADataset, load_split_records
 
 
