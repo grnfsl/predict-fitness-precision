@@ -1,0 +1,45 @@
+<project name="PromIMBatch" default="run"
+         xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <property name="input.dir" value="paper_experiments/logs"/>
+  <property name="output.dir" value="paper_experiments/models"/>
+  <property name="thresholds"
+            value="0.2,0.3,0.5,0.7"/>
+
+  <target name="resolve">
+    <ivy:settings file="ivysettings.xml"/>
+    <ivy:retrieve
+        pattern="lib/[artifact]-[revision].[ext]"
+        sync="false"/>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="classes"/>
+    <javac srcdir="src"
+           destdir="classes"
+           includeantruntime="false">
+      <classpath>
+        <fileset dir="lib" includes="*.jar"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="run" depends="compile">
+    <java classname="PromIMBatch"
+          fork="true"
+          failonerror="true">
+
+      <jvmarg value="-Xmx8G"/>
+
+      <classpath>
+        <pathelement path="classes"/>
+        <fileset dir="lib" includes="*.jar"/>
+      </classpath>
+
+      <arg value="${input.dir}"/>
+      <arg value="${output.dir}"/>
+      <arg value="${thresholds}"/>
+    </java>
+  </target>
+
+</project>
